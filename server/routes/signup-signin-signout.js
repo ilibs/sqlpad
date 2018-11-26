@@ -14,6 +14,8 @@ if (!disableUserpassAuth) {
   router.post('/api/signup', function(req, res) {
     const whitelistedDomains = req.config.get('whitelistedDomains')
 
+    return sendError(res, null, 'signup disable')
+
     if (req.body.password !== req.body.passwordConfirmation) {
       return sendError(res, null, 'Passwords do not match')
     }

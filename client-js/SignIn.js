@@ -65,14 +65,6 @@ class SignIn extends React.Component {
             Sign in
           </button>
         </form>
-        <div className="tc mt3">
-          <Link to="/signup">Sign Up</Link>
-          {smtpConfigured ? (
-            <Link className="ml5" to="/forgot-password">
-              Forgot Password
-            </Link>
-          ) : null}
-        </div>
       </div>
     )
     const googleForm = (
