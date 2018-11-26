@@ -27,6 +27,11 @@ router.get(
           queryText: query.queryText,
           config: req.config
         }
+
+        if(query.queryText.indexOf("delete") !== -1 || query.queryText.indexOf("update") !== -1 || query.queryText.indexOf("insert") !== -1 ){
+          throw "sql not support"
+        }
+
         // NOTE: Sends actual error here since it might have info on why the query is bad
         return getQueryResult(data)
           .then(queryResult => res.send({ queryResult }))
