@@ -29,7 +29,7 @@ router.get(
         }
 
         if(query.queryText.indexOf("delete") !== -1 || query.queryText.indexOf("update") !== -1 || query.queryText.indexOf("insert") !== -1 ){
-          throw "sql not support"
+          return sendError(res, null, 'sql not support')
         }
 
         // NOTE: Sends actual error here since it might have info on why the query is bad
