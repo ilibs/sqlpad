@@ -33,7 +33,7 @@ class SignIn extends React.Component {
   }
 
   render() {
-    const { passport, smtpConfigured, config } = this.props
+    const { passport, config } = this.props
     const { redirect } = this.state
     if (redirect) {
       return <Redirect push to="/" />
