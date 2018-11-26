@@ -28,10 +28,9 @@ router.get(
           config: req.config
         }
 
-        if(query.queryText.indexOf("delete") !== -1 || query.queryText.indexOf("update") !== -1 || query.queryText.indexOf("insert") !== -1 ){
+        if(data.queryText.indexOf("delete") !== -1 || data.queryText.indexOf("update") !== -1 || data.queryText.indexOf("insert") !== -1 ){
           return sendError(res, null, 'sql not support')
         }
-
         // NOTE: Sends actual error here since it might have info on why the query is bad
         return getQueryResult(data)
           .then(queryResult => res.send({ queryResult }))
@@ -51,6 +50,10 @@ router.post('/api/query-result', mustBeAuthenticated, function(req, res) {
     queryName: req.body.queryName,
     queryText: req.body.queryText,
     user: req.user
+  }
+
+  if(data.queryText.indexOf("delete") !== -1 || data.queryText.indexOf("update") !== -1 || data.queryText.indexOf("insert") !== -1 ){
+    return sendError(res, null, 'sql not support')
   }
 
   return getQueryResult(data)
