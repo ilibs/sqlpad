@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Alert from 'react-s-alert'
-import { Link } from 'react-router-dom'
 import fetchJson from './utilities/fetch-json.js'
 import GooglePlusIcon from 'react-icons/lib/fa/google-plus'
 
