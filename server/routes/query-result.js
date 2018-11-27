@@ -28,14 +28,16 @@ router.get(
           config: req.config
         }
 
+        let sql = data.queryText.toLowerCase()
+
         if(
-          data.queryText.indexOf("delete") !== -1
-          || data.queryText.indexOf("update") !== -1
-          || data.queryText.indexOf("insert") !== -1
-          || data.queryText.indexOf("drop") !== -1
-          || data.queryText.indexOf("truncate") !== -1
-          || data.queryText.indexOf("alter") !== -1
-          || data.queryText.indexOf("create") !== -1
+          sql.indexOf("delete") !== -1
+          || sql.indexOf("update") !== -1
+          || sql.indexOf("insert") !== -1
+          || sql.indexOf("drop") !== -1
+          || sql.indexOf("truncate") !== -1
+          || sql.indexOf("alter") !== -1
+          || sql.indexOf("create") !== -1
         ){
           return sendError(res, null, 'sql not support')
         }
@@ -60,14 +62,16 @@ router.post('/api/query-result', mustBeAuthenticated, function(req, res) {
     user: req.user
   }
 
+  let sql = data.queryText.toLowerCase()
+
   if(
-    data.queryText.indexOf("delete") !== -1
-    || data.queryText.indexOf("update") !== -1
-    || data.queryText.indexOf("insert") !== -1
-    || data.queryText.indexOf("drop") !== -1
-    || data.queryText.indexOf("truncate") !== -1
-    || data.queryText.indexOf("alter") !== -1
-    || data.queryText.indexOf("create") !== -1
+    sql.indexOf("delete") !== -1
+    || sql.indexOf("update") !== -1
+    || sql.indexOf("insert") !== -1
+    || sql.indexOf("drop") !== -1
+    || sql.indexOf("truncate") !== -1
+    || sql.indexOf("alter") !== -1
+    || sql.indexOf("create") !== -1
   ){
     return sendError(res, null, 'sql not support')
   }
